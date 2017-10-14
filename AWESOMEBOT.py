@@ -29,6 +29,7 @@ def cancel(bot, update, user_data):
 def button(bot, update, user_data):
 		query = update.callback_query
 		user_data['start'] = query.data
+		user_data['count'] = 2
 		if query.data == "1":
 				bot.edit_message_text(text="Flight  ✈️",
 														chat_id=query.message.chat_id,
@@ -39,10 +40,8 @@ def button(bot, update, user_data):
 														chat_id=query.message.chat_id,
 														message_id=query.message.message_id)
 		elif query.data == "3":
-			bot.edit_message_text(text="Rent a car 🚙",
-														chat_id=query.message.chat_id,
-														message_id=query.message.message_id)
-			#bot.send_message(chat_id=query.message.chat_id, text=AWESOMECAR.startcar())
+			#bot.edit_message_text(text="How much money have you at maximum?", chat_id=query.message.chat_id, message_id=query.message.message_id)
+			bot.send_message(chat_id=query.message.chat_id, text='How much money have you at maximum?')
 			#AWESOMECAR.startcar(query)
 
 		else:
@@ -61,9 +60,15 @@ def error(bot, update, error):
 def echo(bot, update, user_data):
 	try:
 		user_data['count']
-		update.message.reply_text("Well")
 		if user_data['count'] == 1:
-			pass
+			update.message.reply_text("Well")
+		elif user_data['count'] == 2:
+			if user_data['start'] == "3":
+				user_data['count'] = 3
+				user_data['money'] = update.message.text
+				print user_data['money']	
+			
+
 	except: 
 		update.message.reply_text("Please, write /start to awake me")
 		
