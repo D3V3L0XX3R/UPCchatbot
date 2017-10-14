@@ -13,7 +13,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 										level=logging.INFO)
 logger = logging.getLogger(__name__)
 def start(bot, update, user_data):
-		user_data['started'] = 1;
+		user_data['count'] = 1;
 		keyboard = [[InlineKeyboardButton("Flight  ✈️", callback_data='1'),
 								 InlineKeyboardButton("Hotel 🏨", callback_data='2')],
 
@@ -24,7 +24,7 @@ def start(bot, update, user_data):
 		update.message.reply_text('Hi! What would you need?', reply_markup=reply_markup)
 
 def cancel(bot, update, user_data):
-	user_data = None;
+	del user_data;
 
 def button(bot, update):
 		query = update.callback_query
@@ -60,12 +60,10 @@ def error(bot, update, error):
 
 def echo(bot, update, user_data):
 	try:
-		user_data['started']
+		user_data['count']
 		update.message.reply_text("Well")
-	except:
-		titatova = update.message.text
-		update.message.reply_text(titatova)
-		print titatova
+	except: 
+		update.message.reply_text("Please, write /start to awake me")
 		
 # Create the Updater and pass it your bot's token.
 updater = Updater("383425697:AAH4OZM2RhjZTuHM_yBkt4ili9FKIuAMO3c")
