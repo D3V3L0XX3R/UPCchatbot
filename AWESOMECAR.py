@@ -13,10 +13,10 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 
 def start(bot, update):
-    update.message.reply_text('Hey you are in CAR mode!!!', reply_markup=reply_markup)
+    update.message.reply_text('Hey you are in flight mode!!!', reply_markup=reply_markup)
 
 
-def button(bot, update):
+'''def button(bot, update):
     pass
 
 
@@ -41,4 +41,4 @@ updater.start_polling()
 
 # Run the bot until the user presses Ctrl-C or the process receives SIGINT,
 # SIGTERM or SIGABRT
-updater.idle()
+updater.idle()'''
