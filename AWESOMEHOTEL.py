@@ -9,7 +9,7 @@ def starthotel(bot, chat_id):
     global update_id
     bot.send_message(chat_id=chat_id, text="Hotel California")
 
-    r = requests.get('http://partners.api.skyscanner.net/apiservices/browsequotes/v1.0/FR/eur/en-US/es/us/anytime/anytime?apikey=ha129292138013702875479911846997')
+    r = requests.get('http://partners.api.skyscanner.net/apiservices/browsequotes/v1.0/FR/eur/en-US/bcn/mad/anytime/anytime?apikey=ha129292138013702875479911846997')
 
     json_data = json.loads(r.text)
     data = r.json()
