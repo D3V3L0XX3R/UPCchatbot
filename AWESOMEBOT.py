@@ -13,14 +13,14 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 
 def start(bot, update):
-    keyboard = [[InlineKeyboardButton("Fly", callback_data='1'),
-                 InlineKeyboardButton("Sleep", callback_data='2')],
+    keyboard = [[InlineKeyboardButton("Flight ✈️ ", callback_data='1'),
+                 InlineKeyboardButton("Hotel", callback_data='2')],
 
-                [InlineKeyboardButton("Drive", callback_data='3')]]
+                [InlineKeyboardButton("Hire a car", callback_data='3')]]
 
     reply_markup = InlineKeyboardMarkup(keyboard)
 
-    update.message.reply_text('What do you want today:', reply_markup=reply_markup)
+    update.message.reply_text('Hi! What would you need?:', reply_markup=reply_markup)
 
 
 def button(bot, update):
