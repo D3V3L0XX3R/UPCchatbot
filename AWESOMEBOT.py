@@ -13,16 +13,10 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 
 def start(bot, update):
-<<<<<<< HEAD
     keyboard = [[InlineKeyboardButton("Flight  ✈️", callback_data='1'),
                  InlineKeyboardButton("Hotel 🏨", callback_data='2')],
 
                 [InlineKeyboardButton("Rent a car 🚙", callback_data='3')]]
-=======
-    keyboard = [[InlineKeyboardButton("Flight ✈ ", callback_data='1'),
-                 InlineKeyboardButton("Hotel  🏨", callback_data='2')],
-                [InlineKeyboardButton("Hire a car  🚙", callback_data='3')]]
->>>>>>> origin/master
 
     reply_markup = InlineKeyboardMarkup(keyboard)
 
