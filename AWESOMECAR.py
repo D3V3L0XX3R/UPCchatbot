@@ -13,14 +13,24 @@ from telegram.ext import Updater, CommandHandler, CallbackQueryHandler
 
 
 def startcar(bot, chat_id):
-    bot.send_message(chat_id=chat_id, text="PENISCLE")
+    '''bot.send_message(chat_id=chat_id, text="PENISCLE")
     message = "tita loca"
     print message
-    #return message
+    #return message'''
+    update.message.reply_text('My name is Skyblue!')
+    update.message.reply_text('What is your name?')
+    update.message.reply_text('Choose your option',reply_markup=reply_markup)
+    keyboard = [[InlineKeyboardButton("Car Hire",callback_data = 'a' ),InlineKeyboardButton("Aiport Transfers",callback_data='b')]]
+    reply_markup = InlineKeyboardMarkup(keyboard)
 
 
 '''def button(bot, update):
+	query = update.callback_query
+	if 
+
     pass
+
+
 
 
 def help(bot, update):
