@@ -13,41 +13,44 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 
 def start(bot, update):
-		keyboard = [[InlineKeyboardButton("Flight  ✈️", callback_data='1'),
-								 InlineKeyboardButton("Hotel 🏨", callback_data='2')],
+    global a
+    keyboard = [[InlineKeyboardButton("Flight  ✈️", callback_data='1'),
+    						 InlineKeyboardButton("Hotel 🏨", callback_data='2')],
 
-								[InlineKeyboardButton("Rent a car 🚙", callback_data='3')]]
+    						[InlineKeyboardButton("Rent a car 🚙", callback_data='3')]]
 
-		reply_markup = InlineKeyboardMarkup(keyboard)
+    reply_markup = InlineKeyboardMarkup(keyboard)
 
-		update.message.reply_text('Hi! What would you need?', reply_markup=reply_markup)
-
+    update.message.reply_text('Hi! What would you need?', reply_markup=reply_markup)
+    a=update
 
 def button(bot, update):
-		query = update.callback_query
 
-		if query.data == "1":
-				bot.edit_message_text(text="Flight  ✈️",
-														chat_id=query.message.chat_id,
-														message_id=query.message.message_id)
-				AWESOMEFLY.startfly(bot, query.message.chat_id)
+    query = update.callback_query
 
-		elif query.data == "2":
-			bot.edit_message_text(text="Hotel 🏨",
-														chat_id=query.message.chat_id,
-														message_id=query.message.message_id)
-			AWESOMEHOTEL.starthotel(bot, query.message.chat_id)
-		elif query.data == "3":
-			bot.edit_message_text(text="Rent a car 🚙",
-														chat_id=query.message.chat_id,
-														message_id=query.message.message_id)
-			#bot.send_message(chat_id=query.message.chat_id, text=AWESOMECAR.startcar())
-			AWESOMECAR.startcar(bot, query.message.chat_id)
+    if query.data == "1":
+    		bot.edit_message_text(text="Flight  ✈️",
+    												chat_id=query.message.chat_id,
+    												message_id=query.message.message_id)
+    		AWESOMEFLY.startfly(bot, query.message.chat_id)
 
-		else:
-			bot.edit_message_text(text="RILLY NIGGA",
-														chat_id=query.message.chat_id,
-														message_id=query.message.message_id)
+    elif query.data == "2":
+      
+    	bot.edit_message_text(text="Hotel 🏨",
+    												chat_id=query.message.chat_id,
+    												message_id=query.message.message_id)
+    	AWESOMEHOTEL.starthotel(bot, query.message.chat_id,a)
+    elif query.data == "3":
+    	bot.edit_message_text(text="Rent a car 🚙",
+    												chat_id=query.message.chat_id,
+    												message_id=query.message.message_id)
+    	#bot.send_message(chat_id=query.message.chat_id, text=AWESOMECAR.startcar())
+    	AWESOMECAR.startcar(bot, query.message.chat_id)
+
+    else:
+    	bot.edit_message_text(text="RILLY NIGGA",
+    												chat_id=query.message.chat_id,
+    												message_id=query.message.message_id)
 
 
 def help(bot, update):
