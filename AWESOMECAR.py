@@ -6,23 +6,18 @@
 
 import logging
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import Updater, CommandHandler, CallbackQueryHandler
-from telegram import (ReplyKeyboardMarkup, ReplyKeyboardRemove)
+from telegram.ext import Updater, CommandHandler, CallbackQueryHandler, MessageHandler, Filters
 
 '''logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
 					level=logging.INFO)'''
 
 
-def startcar(bot, chat_id, update):
-	update.message.reply_text(
-		'How much money is your maximum?',
-		reply_markup=ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True))
-	if update.message.text < '50':
-		bot.edit_message_text(text="Oh sorry, you are so poor", chat_id=query.message.chat_id, message_id=query.message.message_id)
-	else:
-		bot.edit_message_text(text="Well", chat_id=query.message.chat_id, message_id=query.message.message_id)
-	#bot.send_message(chat_id=query.message.chat_id, text=AWESOMECAR.startcar())
-
+def startcar(query):
+	while true:
+		pass
+	#bot.send_message(chat_id=query.message.chat_id, text="How much money is your maximum?")
+	#♥update.message.reply_text("How much money is your maximum?")
+	#bot.edit_message_text(text="How much money is your maximum?", chat_id=query.message.chat_id, message_id=query.message.message_id)
 
 '''def button(bot, update):
 	pass
@@ -38,6 +33,7 @@ def error(bot, update, error):
 
 # Create the Updater and pass it your bot's token.
 updater = Updater("383425697:AAH4OZM2RhjZTuHM_yBkt4ili9FKIuAMO3c")
+updater.dispatcher.add_handler(MessageHandler(Filters.text, echo))
 
 updater.dispatcher.add_handler(CommandHandler('start', start))
 updater.dispatcher.add_handler(CallbackQueryHandler(button))

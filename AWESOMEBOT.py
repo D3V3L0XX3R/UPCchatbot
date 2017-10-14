@@ -6,12 +6,11 @@
 
 import logging
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import Updater, CommandHandler, CallbackQueryHandler
+from telegram.ext import Updater, CommandHandler, CallbackQueryHandler, MessageHandler, Filters
 import AWESOMECAR
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
 										level=logging.INFO)
-
 
 def start(bot, update):
 		keyboard = [[InlineKeyboardButton("Flight  ✈️", callback_data='1'),
@@ -41,7 +40,7 @@ def button(bot, update):
 														chat_id=query.message.chat_id,
 														message_id=query.message.message_id)
 			#bot.send_message(chat_id=query.message.chat_id, text=AWESOMECAR.startcar())
-			AWESOMECAR.startcar(bot, query.message.chat_id, update)
+			AWESOMECAR.startcar(query)
 
 		else:
 			bot.edit_message_text(text="RILLY NIGGA",
@@ -56,6 +55,8 @@ def help(bot, update):
 def error(bot, update, error):
 		logging.warning('Update "%s" caused error "%s"' % (update, error))
 
+def echo(bot, update):
+	update.message.reply_text("Please, write /start to awake me")
 
 # Create the Updater and pass it your bot's token.
 updater = Updater("383425697:AAH4OZM2RhjZTuHM_yBkt4ili9FKIuAMO3c")
@@ -64,6 +65,7 @@ updater.dispatcher.add_handler(CommandHandler('start', start))
 updater.dispatcher.add_handler(CallbackQueryHandler(button))
 updater.dispatcher.add_handler(CommandHandler('help', help))
 updater.dispatcher.add_error_handler(error)
+updater.dispatcher.add_handler(MessageHandler(Filters.text, echo))
 
 # Start the Bot
 updater.start_polling()
