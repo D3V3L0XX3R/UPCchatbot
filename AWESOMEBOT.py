@@ -26,9 +26,9 @@ def start(bot, update, user_data):
 def cancel(bot, update, user_data):
 	del user_data;
 
-def button(bot, update):
+def button(bot, update, user_data):
 		query = update.callback_query
-
+		user_data['start'] = query.data
 		if query.data == "1":
 				bot.edit_message_text(text="Flight  ✈️",
 														chat_id=query.message.chat_id,
@@ -62,6 +62,8 @@ def echo(bot, update, user_data):
 	try:
 		user_data['count']
 		update.message.reply_text("Well")
+		if user_data['count'] == 1:
+			pass
 	except: 
 		update.message.reply_text("Please, write /start to awake me")
 		
@@ -70,7 +72,7 @@ updater = Updater("383425697:AAH4OZM2RhjZTuHM_yBkt4ili9FKIuAMO3c")
 
 updater.dispatcher.add_handler(CommandHandler('start', start, pass_user_data=True))
 updater.dispatcher.add_handler(CommandHandler('cancel', cancel, pass_user_data=True))
-updater.dispatcher.add_handler(CallbackQueryHandler(button))
+updater.dispatcher.add_handler(CallbackQueryHandler(button, pass_user_data=True))
 updater.dispatcher.add_handler(CommandHandler('help', help))
 updater.dispatcher.add_error_handler(error)
 updater.dispatcher.add_handler(MessageHandler(Filters.text, echo, pass_user_data=True))
