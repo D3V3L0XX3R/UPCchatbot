@@ -14,8 +14,8 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 def start(bot, update):
     keyboard = [[InlineKeyboardButton("Flight ✈️ ", callback_data='1'),
-                 InlineKeyboardButton("Hotel", callback_data='2')],
-                [InlineKeyboardButton("🚙 Hire a car", callback_data='3')]]
+                 InlineKeyboardButton("Hotel  🏨", callback_data='2')],
+                [InlineKeyboardButton("Hire a car  🚙", callback_data='3')]]
 
     reply_markup = InlineKeyboardMarkup(keyboard)
 
