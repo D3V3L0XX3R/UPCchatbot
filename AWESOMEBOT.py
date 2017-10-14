@@ -5,34 +5,47 @@
 # This program is dedicated to the public domain under the CC0 license.
 
 import logging
-import telegram 
-import telegram.ext
-import updater
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+from telegram.ext import Updater, CommandHandler, CallbackQueryHandler
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
 
 
 def start(bot, update):
-    keyboard = [[InlineKeyboardButton("Flight ✈️ ", callback_data='1'),
-                 InlineKeyboardButton("Hotel  🏨", callback_data='2')],
-                [InlineKeyboardButton("Hire a car  🚙", callback_data='3')]]
+    keyboard = [[InlineKeyboardButton("Flight  ✈️", callback_data='1'),
+                 InlineKeyboardButton("Hotel 🏨", callback_data='2')],
+
+                [InlineKeyboardButton("Rent a car 🚙", callback_data='3')]]
 
     reply_markup = InlineKeyboardMarkup(keyboard)
 
-    update.message.reply_text('Hi! What would you need?:', reply_markup=reply_markup)
+    update.message.reply_text('Hi! What would you need?', reply_markup=reply_markup)
 
 
 def button(bot, update):
     query = update.callback_query
 
-    bot.edit_message_text(text="Selected option: %s" % query.data,
-                          chat_id=query.message.chat_id,
-                          message_id=query.message.message_id)
+    if query.data == "1":
+        bot.edit_message_text(text="Flight  ✈️",
+                            chat_id=query.message.chat_id,
+                            message_id=query.message.message_id)
+    elif query.data == "2":
+      bot.edit_message_text(text="Hotel 🏨",
+                            chat_id=query.message.chat_id,
+                            message_id=query.message.message_id)
+    elif query.data == "3":
+      bot.edit_message_text(text="Rent a car 🚙",
+                            chat_id=query.message.chat_id,
+                            message_id=query.message.message_id)
+    else:
+      bot.edit_message_text(text="RILLY NIGGA",
+                            chat_id=query.message.chat_id,
+                            message_id=query.message.message_id)
 
 
 def help(bot, update):
-    update.message.reply_text("This bot helps you to plan a trip.Use /start to begin.")
+    update.message.reply_text("This bot can help you to plan your desired trip in just few clicks!! Use /start to begin.")
 
 
 def error(bot, update, error):
