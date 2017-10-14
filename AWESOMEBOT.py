@@ -11,8 +11,9 @@ import AWESOMECAR
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
 										level=logging.INFO)
-
-def start(bot, update):
+logger = logging.getLogger(__name__)
+def start(bot, update, user_data):
+		user_data['started'] = 1;
 		keyboard = [[InlineKeyboardButton("Flight  ✈️", callback_data='1'),
 								 InlineKeyboardButton("Hotel 🏨", callback_data='2')],
 
@@ -22,6 +23,8 @@ def start(bot, update):
 
 		update.message.reply_text('Hi! What would you need?', reply_markup=reply_markup)
 
+def cancel(bot, update, user_data):
+	user_data.clear();
 
 def button(bot, update):
 		query = update.callback_query
@@ -40,7 +43,7 @@ def button(bot, update):
 														chat_id=query.message.chat_id,
 														message_id=query.message.message_id)
 			#bot.send_message(chat_id=query.message.chat_id, text=AWESOMECAR.startcar())
-			AWESOMECAR.startcar(query)
+			#AWESOMECAR.startcar(query)
 
 		else:
 			bot.edit_message_text(text="RILLY NIGGA",
@@ -55,17 +58,24 @@ def help(bot, update):
 def error(bot, update, error):
 		logging.warning('Update "%s" caused error "%s"' % (update, error))
 
-def echo(bot, update):
-	update.message.reply_text("Please, write /start to awake me")
-
+def echo(bot, update, user_data):
+	try:
+		user_data['started']
+		update.message.reply_text("Well")
+	except:
+		titatova = update.message.text
+		update.message.reply_text(titatova)
+		print titatova
+		
 # Create the Updater and pass it your bot's token.
 updater = Updater("383425697:AAH4OZM2RhjZTuHM_yBkt4ili9FKIuAMO3c")
 
-updater.dispatcher.add_handler(CommandHandler('start', start))
+updater.dispatcher.add_handler(CommandHandler('start', start, pass_user_data=True))
+updater.dispatcher.add_handler(CommandHandler('cancel', cancel, pass_user_data=True))
 updater.dispatcher.add_handler(CallbackQueryHandler(button))
 updater.dispatcher.add_handler(CommandHandler('help', help))
 updater.dispatcher.add_error_handler(error)
-updater.dispatcher.add_handler(MessageHandler(Filters.text, echo))
+updater.dispatcher.add_handler(MessageHandler(Filters.text, echo, pass_user_data=True))
 
 # Start the Bot
 updater.start_polling()
