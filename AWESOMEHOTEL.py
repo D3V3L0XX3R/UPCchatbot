@@ -5,7 +5,7 @@ import requests
 import json
 
 
-def startfly(bot, chat_id):
+def starthotel(bot, chat_id):
     global update_id
     bot.send_message(chat_id=chat_id, text="Hotel California")
     for update in bot.get_updates(offset=update_id, timeout=10):
@@ -20,5 +20,5 @@ def startfly(bot, chat_id):
     #json_data = json.loads(r.text)
     #data = r.json()
 
-    message = "tita loca"
+    message = "jars jars"
     print message
