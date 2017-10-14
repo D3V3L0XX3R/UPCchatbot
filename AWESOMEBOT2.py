@@ -39,7 +39,7 @@ def button(bot, update):
       bot.edit_message_text(text="Hotel 🏨",
                             chat_id=query.message.chat_id,
                             message_id=query.message.message_id)
-      AWESOMEHOTEL.startcar(bot, query.message.chat_id)
+      AWESOMEHOTEL.starthotel(bot, query.message.chat_id)
     elif query.data == "3":
       bot.edit_message_text(text="Rent a car 🚙",
                             chat_id=query.message.chat_id,
