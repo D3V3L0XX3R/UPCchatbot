@@ -13,35 +13,11 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 
 def start(bot, update):
-    keyboard = [[InlineKeyboardButton("Flight  ✈️", callback_data='1'),
-                 InlineKeyboardButton("Hotel 🏨", callback_data='2')],
-
-                [InlineKeyboardButton("Rent a car 🚙", callback_data='3')]]
-
-    reply_markup = InlineKeyboardMarkup(keyboard)
-
-    update.message.reply_text('Hi! What would you need?', reply_markup=reply_markup)
+    update.message.reply_text('Hey you are in CAR mode!!!', reply_markup=reply_markup)
 
 
 def button(bot, update):
-    query = update.callback_query
-
-    if query.data == "1":
-        bot.edit_message_text(text="Flight  ✈️",
-                            chat_id=query.message.chat_id,
-                            message_id=query.message.message_id)
-    elif query.data == "2":
-      bot.edit_message_text(text="Hotel 🏨",
-                            chat_id=query.message.chat_id,
-                            message_id=query.message.message_id)
-    elif query.data == "3":
-      bot.edit_message_text(text="Rent a car 🚙",
-                            chat_id=query.message.chat_id,
-                            message_id=query.message.message_id)
-    else:
-      bot.edit_message_text(text="RILLY NIGGA",
-                            chat_id=query.message.chat_id,
-                            message_id=query.message.message_id)
+    pass
 
 
 def help(bot, update):
