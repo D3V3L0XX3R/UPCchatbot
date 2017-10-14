@@ -40,7 +40,7 @@ def button(bot, update):
       bot.edit_message_text(text="Rent a car 🚙",
                             chat_id=query.message.chat_id,
                             message_id=query.message.message_id)
-      AWESOMECAR.start()
+      AWESOMECAR.startcar(bot, update)
 
     else:
       bot.edit_message_text(text="RILLY NIGGA",

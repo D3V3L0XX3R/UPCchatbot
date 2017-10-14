@@ -8,11 +8,11 @@ import logging
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, CallbackQueryHandler
 
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                    level=logging.INFO)
+'''logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                    level=logging.INFO)'''
 
 
-def start(bot, update):
+def startcar(bot, update):
     update.message.reply_text('Hey you are in flight mode!!!', reply_markup=reply_markup)
 
 
