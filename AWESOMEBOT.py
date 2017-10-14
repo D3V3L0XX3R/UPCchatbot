@@ -5,8 +5,8 @@
 # This program is dedicated to the public domain under the CC0 license.
 
 import logging
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import Updater, CommandHandler, CallbackQueryHandler
+import telegram 
+import telegram.ext
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
@@ -16,7 +16,7 @@ def start(bot, update):
     keyboard = [[InlineKeyboardButton("Fly", callback_data='1'),
                  InlineKeyboardButton("Sleep", callback_data='2')],
 
-                [InlineKeyboardButton("Drive", callback_data='3')]]
+                [InlineKeyboardButton("🚙 Drive", callback_data='3')]]
 
     reply_markup = InlineKeyboardMarkup(keyboard)
 
@@ -32,7 +32,7 @@ def button(bot, update):
 
 
 def help(bot, update):
-    update.message.reply_text("Use /start to test this bot.")
+    update.message.reply_text("This bot helps you to plan a trip.Use /start to begin.")
 
 
 def error(bot, update, error):
