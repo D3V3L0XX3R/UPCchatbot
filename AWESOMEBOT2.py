@@ -8,6 +8,7 @@ import logging
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, CallbackQueryHandler
 import AWESOMECAR
+import AWESOMEHOTEL
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
@@ -36,6 +37,7 @@ def button(bot, update):
       bot.edit_message_text(text="Hotel 🏨",
                             chat_id=query.message.chat_id,
                             message_id=query.message.message_id)
+      AWESOMEHOTEL.startcar(bot, query.message.chat_id)
     elif query.data == "3":
       bot.edit_message_text(text="Rent a car 🚙",
                             chat_id=query.message.chat_id,
