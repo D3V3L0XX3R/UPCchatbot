@@ -15,10 +15,11 @@ def starthotel(bot, chat_id):
       
         update.message.reply_text(update.message.text)
 
-    #r = requests.get('https://github.com/timeline.json')
+    r = requests.get('http://partners.api.skyscanner.net/apiservices/browsequotes/v1.0/FR/eur/en-US/es/us/anytime/anytime?apikey=ha129292138013702875479911846997')
 
-    #json_data = json.loads(r.text)
-    #data = r.json()
+    json_data = json.loads(r.text)
+    data = r.json()
+    print data
 
     message = "jars jars"
     print message
