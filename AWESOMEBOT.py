@@ -24,7 +24,7 @@ def start(bot, update, user_data):
 		update.message.reply_text('Hi! What would you need?', reply_markup=reply_markup)
 
 def cancel(bot, update, user_data):
-	user_data.clear();
+	user_data = None;
 
 def button(bot, update):
 		query = update.callback_query
