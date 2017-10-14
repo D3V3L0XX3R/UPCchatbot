@@ -12,9 +12,11 @@ from telegram.ext import Updater, CommandHandler, CallbackQueryHandler
                     level=logging.INFO)'''
 
 
-def startcar():
+def startcar(bot, chat_id):
+    bot.send_message(chat_id=chat_id, text="PENISCLE")
     message = "tita loca"
-    return message
+    print message
+    #return message
 
 
 '''def button(bot, update):
