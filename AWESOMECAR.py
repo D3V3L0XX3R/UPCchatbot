@@ -12,8 +12,9 @@ from telegram.ext import Updater, CommandHandler, CallbackQueryHandler
                     level=logging.INFO)'''
 
 
-def startcar(bot, update):
-    update.message.reply_text('Hey you are in flight mode!!!', reply_markup=reply_markup)
+def startcar():
+    message = "tita loca"
+    return message
 
 
 '''def button(bot, update):
